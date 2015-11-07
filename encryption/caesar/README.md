@@ -1,9 +1,11 @@
-This is (currently horrible) implementation
+This is an implementation
 of the Caesar cipher. Currently it only works
 for capital letters A-Z.
 
 TODO:
-refactor into functional or OOP data structure
+
 refactor to be more "idiomatic" ruby
+
+add decryption? (I think I can just use -shift to decrypt though)
 
 
