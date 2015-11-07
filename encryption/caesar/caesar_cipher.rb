@@ -1,42 +1,50 @@
-string = 'XYZ'
-string_array = string.split(//)
-char_code_array = []
-scaled_array = []
-shift = 3
-shifted_scaled_code_array = []
-final_code_array = []
-final_char_array = []
+$encrypted_array = []
 
-
-for i in (0...string.length) 
-  char_code_array.push(string_array[i].ord)
+def encrypt_string(string, shift)
+  string_array = string.split(//)
+  for letter in string_array
+    $encrypted_array.push(encode_letter(letter, shift))
+  end
+  return $encrypted_array 
 end
 
-for code in char_code_array
-  scaled_array.push(code - 65)
+def encode_letter(letter, shift)
+  zero_shift = 0
+  if is_uppercase?(letter)
+    zero_shift = 65
+  elsif is_lowercase?(letter)
+    zero_shift = 97
+  else
+    puts "Error, please enter upper or lowercase letters only."
+    return
+  end
+    
+  # finds ascii character for given letter
+  ascii_code = letter.ord
+  # shifts so code is on (0...26) index
+  zeroed_code = ascii_code - zero_shift
+  # shifts based on given parameter (w/ wraparound)
+  shifted_zeroed_code = (zeroed_code + shift) % 26
+  # shifts back to ascii
+  final_code = shifted_zeroed_code + zero_shift
+  final_char = final_code.chr
+  return final_char 
 end
 
-for code in scaled_array 
-  shifted_scaled_code_array.push((code + shift) % 26)
+def is_uppercase?(letter)
+  if letter.ord >= 65 && letter.ord <= 90
+    return true
+  else
+    return false
+  end
 end
 
-#puts string_array
-#puts '-' * 10
-#puts char_code_array
-#puts '-' * 10
-#puts scaled_array
-#puts '-' * 10
-#puts final_code_array
-
-for code in shifted_scaled_code_array
-  final_code_array.push(code + 65)
+def is_lowercase?(letter)
+  if letter.ord >= 97 && letter.ord <= 122
+    return true
+  else
+    return false
+  end
 end
 
-for code in final_code_array
-  final_char_array.push(code.chr)
-end
-
-puts string_array.join
-puts '-' * 10
-puts final_char_array.join
-
+puts encrypt_string('nancy', 5).join('')
