@@ -1,15 +1,12 @@
 # Based of the Sieve of Eratosthenes
 
-$numbers = (2..100).to_a
+num_list = (2..100).to_a
 $prime_list = []
 
-def filter_by_number(number)
-  $numbers = $numbers.select { |n| n % number != 0}
-  $prime_list.push(number)
+while !num_list.empty?
+  prime = num_list.first
+  $prime_list << num_list.first
+  num_list = num_list.delete_if{|x| x % prime == 0 }
 end
 
-for n in $numbers 
-  filter_by_number($numbers.first)
-end
-puts $prime_list.compact
-
+puts $prime_list
