@@ -1,11 +1,6 @@
 This is an implementation
-of the Caesar cipher. Currently it only works
-for capital letters A-Z.
+of the Caesar cipher.
 
-TODO:
-
-refactor to be more "idiomatic" ruby
-
-add decryption? (I think I can just use -shift to decrypt though)
+TODO: Refactor and add unit testing
 
 

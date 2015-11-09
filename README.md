@@ -1,3 +1,3 @@
 # ruby-scripts
 
-This is a ruby experimentation repo.
+This is a ruby practice and experimentation repo.
