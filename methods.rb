@@ -1,0 +1,2 @@
+puts 'b'.methods.sort
+
